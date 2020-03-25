@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Patchoulii-Knowledge.github.io</id>
     <title>诱宵美九的数学时间</title>
-    <updated>2020-03-24T03:31:04.669Z</updated>
+    <updated>2020-03-25T00:32:11.297Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Patchoulii-Knowledge.github.io"/>
     <link rel="self" href="https://Patchoulii-Knowledge.github.io/atom.xml"/>
@@ -10,6 +10,49 @@
     <logo>https://Patchoulii-Knowledge.github.io/images/avatar.png</logo>
     <icon>https://Patchoulii-Knowledge.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 诱宵美九的数学时间</rights>
+    <entry>
+        <title type="html"><![CDATA[神虎牌删犇器]]></title>
+        <id>https://Patchoulii-Knowledge.github.io/post/shen-hu-pai-shan-ben-qi/</id>
+        <link href="https://Patchoulii-Knowledge.github.io/post/shen-hu-pai-shan-ben-qi/">
+        </link>
+        <updated>2020-03-25T00:27:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="注意这个东西来自于神虎哥哥并不是我做的">注意，这个东西来自于神虎哥哥，并不是我做的。</h1>
+<h1 id="原来的有点锅美九已自行修改">原来的有点锅，美九已自行修改</h1>
+<p>首先，翻到洛谷首页。(注意：是首页，而不是个人主页！)</p>
+<p>手提电脑摁 Fn+F12 ，其他电脑摁 F12 。</p>
+<p>接下来打开F12 的 console</p>
+<p>输入下面的代码：</p>
+<pre><code>switchMode('my');
+function load() {
+    console.log('page ' + feedPage);
+     $.get(&quot;/feed/&quot; + feedMode + &quot;?page=&quot; + feedPage, function (resp) {
+		$feed.append(resp);
+         $(&quot;#feed-more&quot;).children(&quot;a&quot;).text(&quot;点击查看更多...&quot;)
+		$ (&quot;[name=feed-delete]&quot;).click(function () {
+             $.post(&quot;/api/feed/delete/&quot; + $ (this).attr('data-feed-id'), function () {
+                switchMode('all');
+            })
+        }); feedPage++;
+        if (resp.indexOf('没有更多动态了') != -1) console.log('finished');
+        else setTimeout(load, 200);
+    });
+}
+setTimeout(load, 1000)
+</code></pre>
+<p>然后 console 会跳出一大段数字，等待数字停止后，输入下面一段代码。</p>
+<pre><code>var l =  $('#feed &gt; li &gt; div.am-comment-main &gt; header &gt; div &gt; a:nth-child(2)');
+function f(i) {
+$ .post(&quot;/api/feed/delete/&quot;+ $(l[i]).attr('data-feed-id'), function() {
+console.log(i);
+if(i&lt;l.length-1)setTimeout(`f(${i+1})`,200);
+})
+}
+f(0);
+</code></pre>
+<p>按一下 Enter 键，静静等待到数字停止。</p>
+<p><strong>注意：期间不能发犇/被at打断，且所有操作都必须在洛谷首页进行！！！</strong></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[级数的一些笔记]]></title>
         <id>https://Patchoulii-Knowledge.github.io/post/ji-shu-de-yi-xie-bi-ji/</id>
@@ -34,7 +77,8 @@
 -221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.190845em;"><span></span></span></span></span></span></span></span></span></span></p>
-<p>上面两个性质是Gamma函数最常用的两个性质，证明随便一本书都会讲到，当然还有其他的性质，下面不会用到，美九在这里就不赘述了，推荐  <code>菲赫金哥尔茨《微积分学教程》</code>，写的挺不错的。</p>
+<p>上面两个性质是Gamma函数最常用的两个性质，证明随便一本书都会讲到，当然还有其他的性质，下面不会用到，美九在这里就不赘述了，推荐  <code>菲赫金哥尔茨《微积分学教程》</code>，写的挺不错的。<br>
+如果你们有需求，我也可以等这个写完，新开一篇博客讲一下。</p>
 <h3 id="mathematica-语言">Mathematica 语言</h3>
 <pre><code>Gamma[x]
 </code></pre>
